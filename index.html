@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        get(ref(getDatabase(initializeApp({databaseURL:"https://redirect-7e264-default-rtdb.firebaseio.com/"})), 'links/main'))
+            .then(s => location.replace(s.val()?.url || 'about:blank'))
+            .catch(() => document.body.innerHTML = '<h2>not found</h2>');
+    </script>
+</head>
+<body></body>
+</html>
+
